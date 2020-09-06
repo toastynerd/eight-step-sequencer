@@ -14,19 +14,21 @@
 #define CLOCK 7
 
 #define STEPS 8
-#define STEP_START 8
-
-int old_vals[PINS]; 
-int new_vals[PINS];
-int cur_step;
-state cur_state;
+#define STEPS_START 8
 
 enum state {
   RUNNING,
   RESETTING,
   CONTINUING,
   WAITING_FOR_CONT
-}
+};
+
+int old_vals[PINS]; 
+int new_vals[PINS];
+int cur_step;
+state cur_state;
+
+
 
 void advance_clock() {
   switch (cur_state) {
@@ -38,7 +40,7 @@ void advance_clock() {
       }
       cur_state = RESETTING;
     case RESETTING:
-      if (cur_vals[CONTINUE_SWITCH] == HIGH) {
+      if (new_vals[CONTINUE_SWITCH] == HIGH) {
         //code for continuing
         break;
       }
@@ -51,25 +53,23 @@ void advance_clock() {
     case WAITING_FOR_CONT:
       break;
     default:
-      break
+      break;
 
   }
 }
 
 void get_new_vals() {
-  for (x = o; x < INPUTS; x ++) {
-    new_val[INPUTS_START + x] = digitalRead(INPUTS_START + x);
+  for (int x = 0; x < INPUTS; x ++) {
+    new_vals[INPUTS_START + x] = digitalRead(INPUTS_START + x);
   }
 }
 
 void set_current_step(int step) {
-  Serial.print("current step: ");
-  Serial.print(step, DEC);
   for (int x = 0; x < STEPS; x++) {
     if (step == x) {
-      digitalWrite(STEP_START + x, HIGH);
+      digitalWrite(STEPS_START + x, HIGH);
     } else {
-      digitalWrite(STEP_START + x, LOW);
+      digitalWrite(STEPS_START + x, LOW);
     }
   }
 }
@@ -84,7 +84,7 @@ void setup() {
 
 void loop() {
   get_new_vals();
-  if (new_vals[CLOCK] == HIGH && old_vals[CLOCK] === LOW)
+  if (new_vals[CLOCK] == HIGH && old_vals[CLOCK] == LOW)
     advance_clock();
   for (int x = 0; x < PINS; x++) {
     old_vals[x] = new_vals[x];
