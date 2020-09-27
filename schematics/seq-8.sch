@@ -4,12 +4,12 @@ EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
-Title ""
+Title "8 Step Sequencer"
 Date ""
 Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
+Comp "toastynerd <Tyler Morgan>"
+Comment1 "2020 Creative Commons Non Commercial"
+Comment2 "8 Step Sequencer"
 Comment3 ""
 Comment4 ""
 $EndDescr
@@ -1285,4 +1285,89 @@ Wire Wire Line
 Connection ~ 9900 10250
 Wire Wire Line
 	9900 10250 10800 10250
+$Comp
+L Regulator_Linear:LM7805_TO220 U?
+U 1 1 5FA26E7E
+P 9800 1400
+F 0 "U?" H 9800 1642 50  0000 C CNN
+F 1 "LM7805_TO220" H 9800 1551 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 9800 1625 50  0001 C CIN
+F 3 "http://www.fairchildsemi.com/ds/LM/LM7805.pdf" H 9800 1350 50  0001 C CNN
+	1    9800 1400
+	1    0    0    -1  
+$EndComp
+Text GLabel 9250 850  0    50   Input ~ 0
+clock_in
+Wire Wire Line
+	9500 1400 9250 1400
+Wire Wire Line
+	9250 1400 9250 850 
+$Comp
+L power:GND #PWR?
+U 1 1 5FA2EA21
+P 9800 1700
+F 0 "#PWR?" H 9800 1450 50  0001 C CNN
+F 1 "GND" H 9805 1527 50  0000 C CNN
+F 2 "" H 9800 1700 50  0001 C CNN
+F 3 "" H 9800 1700 50  0001 C CNN
+	1    9800 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9200 3900 9050 3900
+Wire Wire Line
+	9050 3900 9050 2200
+Wire Wire Line
+	9050 2200 10100 2200
+Wire Wire Line
+	10100 2200 10100 1400
+$Comp
+L Regulator_Linear:LM7805_TO220 U?
+U 1 1 5FA34670
+P 10900 1400
+F 0 "U?" H 10900 1642 50  0000 C CNN
+F 1 "LM7805_TO220" H 10900 1551 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 10900 1625 50  0001 C CIN
+F 3 "http://www.fairchildsemi.com/ds/LM/LM7805.pdf" H 10900 1350 50  0001 C CNN
+	1    10900 1400
+	1    0    0    -1  
+$EndComp
+Text GLabel 10350 900  0    50   Input ~ 0
+reset_in
+Wire Wire Line
+	10350 900  10450 900 
+Wire Wire Line
+	10450 900  10450 1400
+Wire Wire Line
+	10450 1400 10600 1400
+$Comp
+L power:GND #PWR?
+U 1 1 5FA3BE86
+P 10900 1700
+F 0 "#PWR?" H 10900 1450 50  0001 C CNN
+F 1 "GND" H 10905 1527 50  0000 C CNN
+F 2 "" H 10900 1700 50  0001 C CNN
+F 3 "" H 10900 1700 50  0001 C CNN
+	1    10900 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11200 1400 11350 1400
+Wire Wire Line
+	11350 1400 11350 2800
+Wire Wire Line
+	11350 2800 9900 2800
+Wire Wire Line
+	8600 2800 8600 3800
+Wire Wire Line
+	8600 3800 9200 3800
+Connection ~ 9600 2800
+Wire Wire Line
+	9600 2800 8600 2800
+Connection ~ 9800 2800
+Wire Wire Line
+	9800 2800 9600 2800
+Connection ~ 9900 2800
+Wire Wire Line
+	9900 2800 9800 2800
 $EndSCHEMATC
