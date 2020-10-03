@@ -38,7 +38,7 @@ void update_vals() {
 void advance_clock() {
   switch (cur_state) {
     case RESETTING:
-      if (new_vals[CONTINUE_SWITCH] == HIGH) {
+      if (new_vals[CONTINUE_SWITCH] == HIGH || new_vals[CONTINUE_CV == HIGH]) {
         cur_state = CONTINUING;
         break;
       }
@@ -48,7 +48,7 @@ void advance_clock() {
       set_current_step(cur_step);
       cur_step++;
     case RUNNING:
-      if (new_vals[CONTINUE_SWITCH] == LOW) {
+      if (new_vals[CONTINUE_SWITCH] == LOW && new_vals[CONTINUE_CV == LOW]) {
         digitalWrite(CONTINUE_OUT, new_vals[CLOCK]);
       }
       if (new_vals[CLOCK] == HIGH && old_vals[CLOCK] != new_vals[CLOCK]) {
